@@ -44,28 +44,28 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="bg-white dark:bg-secondary-900 shadow-sm border-b border-secondary-200 dark:border-secondary-700">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold text-primary-600">
+    <header className="bg-white dark:bg-secondary-900 shadow-sm border-b border-secondary-200 dark:border-secondary-700 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+        <Link to="/" className="text-xl font-bold text-primary-600 shrink-0">
           MFE Store
         </Link>
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-2 sm:gap-4 md:gap-6 flex-wrap">
           {navLinks.map((link) => {
             const Icon = link.icon;
             return (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
+                className={`flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-medium transition-colors ${
                   location.pathname === link.path
                     ? 'text-primary-600'
                     : 'text-secondary-600 dark:text-secondary-400 hover:text-primary-600'
                 }`}
               >
                 <Icon className="w-4 h-4" />
-                {link.label}
+                <span className="hidden sm:inline">{link.label}</span>
                 {link.path === '/cart' && cartCount > 0 && (
-                  <span className="ml-1 inline-flex items-center justify-center min-w-[1.25rem] h-5 px-1.5 text-xs font-bold text-white rounded-full bg-danger-500">
+                  <span className="ml-0.5 sm:ml-1 inline-flex items-center justify-center min-w-[1.25rem] h-5 px-1.5 text-xs font-bold text-white rounded-full bg-danger-500">
                     {cartCount}
                   </span>
                 )}
