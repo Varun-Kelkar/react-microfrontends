@@ -74,7 +74,7 @@ const HealthCheck: React.FC = () => {
       )}
 
       {/* Status table */}
-      <div className="bg-white dark:bg-secondary-800 rounded shadow-sm border border-secondary-200 dark:border-secondary-700 overflow-hidden">
+      <div className="bg-white dark:bg-secondary-800 rounded shadow-sm border border-secondary-200 dark:border-secondary-700 overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="border-b border-secondary-200 dark:border-secondary-700 bg-secondary-50 dark:bg-secondary-900">
