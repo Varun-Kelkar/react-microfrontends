@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from 'uiKit/Button';
 import Input from 'uiKit/Input';
 import Toast from 'uiKit/Toast';
-import { EventBus, EVENTS } from '@mfe-demo/shared/eventBus';
+import { EventBus } from '@mfe-demo/shared/eventBus';
 import { CartItem, ShippingAddress } from '@mfe-demo/shared/types';
 import './styles.css';
 
 const Checkout: React.FC = () => {
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [showToast, setShowToast] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
@@ -57,7 +59,7 @@ const Checkout: React.FC = () => {
 
     // Clear cart
     localStorage.removeItem('mfe-cart');
-    EventBus.emit(EVENTS.CART_CLEAR, null);
+    EventBus.emit('cart:clear', null);
 
     setOrderPlaced(true);
     setShowToast(true);
@@ -74,7 +76,7 @@ const Checkout: React.FC = () => {
           Thank you for your purchase. Your order is being processed.
         </p>
         <div className="mt-6">
-          <Button onClick={() => (window.location.href = '/products')}>
+          <Button onClick={() => navigate('/products')}>
             Continue Shopping
           </Button>
         </div>

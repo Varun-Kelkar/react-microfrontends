@@ -1,4 +1,6 @@
 export { EventBus, EVENTS } from './eventBus';
+export type { EventPayloadMap, EventName } from './eventContracts';
+export { eventSchemas } from './eventSchemas';
 export type {
   Product,
   CartItem,

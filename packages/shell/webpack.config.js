@@ -56,6 +56,7 @@ module.exports = (env, argv) => {
         },
       }),
       new webpack.DefinePlugin({
+        __DEV__: JSON.stringify(!isProduction),
         __UI_KIT_URL__: JSON.stringify(process.env.UI_KIT_URL || 'http://localhost:3001'),
         __PRODUCT_CATALOG_URL__: JSON.stringify(process.env.PRODUCT_CATALOG_URL || 'http://localhost:3002'),
         __CART_URL__: JSON.stringify(process.env.CART_URL || 'http://localhost:3003'),

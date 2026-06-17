@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Badge from 'uiKit/Badge';
-import { EventBus, EVENTS } from '@mfe-demo/shared/eventBus';
+import { EventBus } from '@mfe-demo/shared/eventBus';
 import { CartItem } from '@mfe-demo/shared/types';
 
 const CartBadge: React.FC = () => {
@@ -19,16 +19,16 @@ const CartBadge: React.FC = () => {
 
     updateCount();
 
-    EventBus.on(EVENTS.CART_ADD_ITEM, updateCount);
-    EventBus.on(EVENTS.CART_REMOVE_ITEM, updateCount);
-    EventBus.on(EVENTS.CART_CLEAR, updateCount);
-    EventBus.on(EVENTS.CART_UPDATE_QUANTITY, updateCount);
+    EventBus.on('cart:add-item', updateCount);
+    EventBus.on('cart:remove-item', updateCount);
+    EventBus.on('cart:clear', updateCount);
+    EventBus.on('cart:update-quantity', updateCount);
 
     return () => {
-      EventBus.off(EVENTS.CART_ADD_ITEM, updateCount);
-      EventBus.off(EVENTS.CART_REMOVE_ITEM, updateCount);
-      EventBus.off(EVENTS.CART_CLEAR, updateCount);
-      EventBus.off(EVENTS.CART_UPDATE_QUANTITY, updateCount);
+      EventBus.off('cart:add-item', updateCount);
+      EventBus.off('cart:remove-item', updateCount);
+      EventBus.off('cart:clear', updateCount);
+      EventBus.off('cart:update-quantity', updateCount);
     };
   }, []);
 

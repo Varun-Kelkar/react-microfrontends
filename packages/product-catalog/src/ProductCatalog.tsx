@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'uiKit/Button';
 import Card from 'uiKit/Card';
-import { EventBus, EVENTS } from '@mfe-demo/shared/eventBus';
+import { EventBus } from '@mfe-demo/shared/eventBus';
 import { Product } from '@mfe-demo/shared/types';
 import { products } from './data/products';
 import './styles.css';
@@ -31,7 +31,7 @@ const ProductCatalog: React.FC = () => {
     localStorage.setItem('mfe-cart', JSON.stringify(cartItems));
 
     // Emit event for cross-MFE communication
-    EventBus.emit(EVENTS.CART_ADD_ITEM, { product, quantity: 1 });
+    EventBus.emit('cart:add-item', { product, quantity: 1 });
   };
 
   return (

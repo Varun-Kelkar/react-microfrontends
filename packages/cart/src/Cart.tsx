@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from 'uiKit/Button';
 import Modal from 'uiKit/Modal';
-import { EventBus, EVENTS } from '@mfe-demo/shared/eventBus';
+import { EventBus } from '@mfe-demo/shared/eventBus';
 import { CartItem } from '@mfe-demo/shared/types';
 import './styles.css';
 
 const Cart: React.FC = () => {
+  const navigate = useNavigate();
   const [items, setItems] = useState<CartItem[]>([]);
   const [removeTarget, setRemoveTarget] = useState<string | null>(null);
 
@@ -18,10 +20,10 @@ const Cart: React.FC = () => {
     loadCart();
 
     const handleCartChange = () => loadCart();
-    EventBus.on(EVENTS.CART_ADD_ITEM, handleCartChange);
+    EventBus.on('cart:add-item', handleCartChange);
 
     return () => {
-      EventBus.off(EVENTS.CART_ADD_ITEM, handleCartChange);
+      EventBus.off('cart:add-item', handleCartChange);
     };
   }, []);
 
@@ -36,14 +38,14 @@ const Cart: React.FC = () => {
 
     setItems(updated);
     localStorage.setItem('mfe-cart', JSON.stringify(updated));
-    EventBus.emit(EVENTS.CART_UPDATE_QUANTITY, { productId, delta });
+    EventBus.emit('cart:update-quantity', { productId, delta });
   };
 
   const removeItem = (productId: string) => {
     const updated = items.filter((item) => item.product.id !== productId);
     setItems(updated);
     localStorage.setItem('mfe-cart', JSON.stringify(updated));
-    EventBus.emit(EVENTS.CART_REMOVE_ITEM, { productId });
+    EventBus.emit('cart:remove-item', { productId });
     setRemoveTarget(null);
   };
 
@@ -126,7 +128,7 @@ const Cart: React.FC = () => {
       </div>
 
       <div className="mt-4 flex justify-end">
-        <Button onClick={() => (window.location.href = '/checkout')}>
+        <Button onClick={() => navigate('/checkout')}>
           Proceed to Checkout
         </Button>
       </div>

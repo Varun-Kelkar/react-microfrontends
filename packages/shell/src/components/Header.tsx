@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, ShoppingBag, ShoppingCart, CreditCard, Activity } from 'lucide-react';
-import { EventBus, EVENTS } from '@mfe-demo/shared/eventBus';
+import { EventBus } from '@mfe-demo/shared/eventBus';
 import type { CartItem } from '@mfe-demo/shared/types';
 import ThemeToggle from './ThemeToggle';
 
@@ -25,14 +25,14 @@ const Header: React.FC = () => {
 
     // Listen for cart events
     const handleCartChange = () => updateCartCount();
-    EventBus.on(EVENTS.CART_ADD_ITEM, handleCartChange);
-    EventBus.on(EVENTS.CART_REMOVE_ITEM, handleCartChange);
-    EventBus.on(EVENTS.CART_CLEAR, handleCartChange);
+    EventBus.on('cart:add-item', handleCartChange);
+    EventBus.on('cart:remove-item', handleCartChange);
+    EventBus.on('cart:clear', handleCartChange);
 
     return () => {
-      EventBus.off(EVENTS.CART_ADD_ITEM, handleCartChange);
-      EventBus.off(EVENTS.CART_REMOVE_ITEM, handleCartChange);
-      EventBus.off(EVENTS.CART_CLEAR, handleCartChange);
+      EventBus.off('cart:add-item', handleCartChange);
+      EventBus.off('cart:remove-item', handleCartChange);
+      EventBus.off('cart:clear', handleCartChange);
     };
   }, []);
 

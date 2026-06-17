@@ -1,5 +1,6 @@
 require('dotenv').config();
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -53,7 +54,11 @@ module.exports = (env, argv) => {
         shared: {
           react: { singleton: true, strictVersion: true, requiredVersion: '^18.3.1' },
           'react-dom': { singleton: true, strictVersion: true, requiredVersion: '^18.3.1' },
+          'react-router-dom': { singleton: true, strictVersion: true, requiredVersion: '^6.23.1' },
         },
+      }),
+      new webpack.DefinePlugin({
+        __DEV__: JSON.stringify(!isProduction),
       }),
       new HtmlWebpackPlugin({
         template: './public/index.html',
