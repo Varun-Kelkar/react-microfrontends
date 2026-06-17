@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, ShoppingBag, ShoppingCart, CreditCard } from 'lucide-react';
+import { Home, ShoppingBag, ShoppingCart, CreditCard, Activity } from 'lucide-react';
 import { EventBus, EVENTS } from '@mfe-demo/shared/eventBus';
 import type { CartItem } from '@mfe-demo/shared/types';
 import ThemeToggle from './ThemeToggle';
@@ -41,6 +41,7 @@ const Header: React.FC = () => {
     { path: '/products', label: 'Products', icon: ShoppingBag },
     { path: '/cart', label: 'Cart', icon: ShoppingCart },
     { path: '/checkout', label: 'Checkout', icon: CreditCard },
+    { path: '/health-check', label: 'Health', icon: Activity },
   ];
 
   return (

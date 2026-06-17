@@ -1,12 +1,20 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import LandingPage from './components/LandingPage';
+import HealthCheck from './components/HealthCheck';
 import RemoteErrorBoundary from './components/RemoteErrorBoundary';
+import { retryLazy } from './utils/retryLazy';
 
-const ProductCatalog = lazy(() => import('productCatalog/ProductCatalog'));
-const Cart = lazy(() => import('cart/Cart'));
-const Checkout = lazy(() => import('checkout/Checkout'));
+const { Component: ProductCatalog, retry: retryProductCatalog } = retryLazy(
+  () => import('productCatalog/ProductCatalog')
+);
+const { Component: Cart, retry: retryCart } = retryLazy(
+  () => import('cart/Cart')
+);
+const { Component: Checkout, retry: retryCheckout } = retryLazy(
+  () => import('checkout/Checkout')
+);
 
 const LoadingFallback = () => (
   <div className="flex items-center justify-center h-64">
@@ -26,7 +34,7 @@ const App: React.FC = () => {
               <Route
                 path="/products"
                 element={
-                  <RemoteErrorBoundary name="Product Catalog">
+                  <RemoteErrorBoundary name="Product Catalog" onRetry={retryProductCatalog}>
                     <ProductCatalog />
                   </RemoteErrorBoundary>
                 }
@@ -34,7 +42,7 @@ const App: React.FC = () => {
               <Route
                 path="/cart"
                 element={
-                  <RemoteErrorBoundary name="Cart">
+                  <RemoteErrorBoundary name="Cart" onRetry={retryCart}>
                     <Cart />
                   </RemoteErrorBoundary>
                 }
@@ -42,11 +50,12 @@ const App: React.FC = () => {
               <Route
                 path="/checkout"
                 element={
-                  <RemoteErrorBoundary name="Checkout">
+                  <RemoteErrorBoundary name="Checkout" onRetry={retryCheckout}>
                     <Checkout />
                   </RemoteErrorBoundary>
                 }
               />
+              <Route path="/health-check" element={<HealthCheck />} />
             </Routes>
           </Suspense>
         </main>

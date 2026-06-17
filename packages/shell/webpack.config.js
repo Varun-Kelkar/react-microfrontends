@@ -1,5 +1,6 @@
 require('dotenv').config();
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -53,6 +54,12 @@ module.exports = (env, argv) => {
           'react-dom': { singleton: true, strictVersion: true, requiredVersion: '^18.3.1' },
           'react-router-dom': { singleton: true, strictVersion: true, requiredVersion: '^6.23.1' },
         },
+      }),
+      new webpack.DefinePlugin({
+        __UI_KIT_URL__: JSON.stringify(process.env.UI_KIT_URL || 'http://localhost:3001'),
+        __PRODUCT_CATALOG_URL__: JSON.stringify(process.env.PRODUCT_CATALOG_URL || 'http://localhost:3002'),
+        __CART_URL__: JSON.stringify(process.env.CART_URL || 'http://localhost:3003'),
+        __CHECKOUT_URL__: JSON.stringify(process.env.CHECKOUT_URL || 'http://localhost:3004'),
       }),
       new HtmlWebpackPlugin({
         template: './public/index.html',
