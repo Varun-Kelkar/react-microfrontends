@@ -1,0 +1,22 @@
+{
+  "name": "microfrontends-ecommerce",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "concurrently \"npm run start:ui-kit\" \"npm run start:product-catalog\" \"npm run start:cart\" \"npm run start:checkout\" \"npm run start:shell\"",
+    "start:shell": "npm run start --workspace=packages/shell",
+    "start:product-catalog": "npm run start --workspace=packages/product-catalog",
+    "start:cart": "npm run start --workspace=packages/cart",
+    "start:checkout": "npm run start --workspace=packages/checkout",
+    "start:ui-kit": "npm run start --workspace=packages/ui-kit",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

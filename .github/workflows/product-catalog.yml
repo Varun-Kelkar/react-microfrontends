@@ -1,0 +1,51 @@
+name: Product Catalog CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/product-catalog/**'
+      - 'packages/shared/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'packages/product-catalog/**'
+      - 'packages/shared/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: packages/product-catalog
+
+      - name: Lint
+        run: npm run lint
+        working-directory: packages/product-catalog
+
+      - name: Test
+        run: npm test
+        working-directory: packages/product-catalog
+
+      - name: Build
+        run: npm run build
+        working-directory: packages/product-catalog
+
+      - name: Deploy to S3
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          S3_BUCKET: ${{ vars.S3_BUCKET_PRODUCT_CATALOG }}
+        run: |
+          aws s3 sync packages/product-catalog/dist s3://$S3_BUCKET/ --delete

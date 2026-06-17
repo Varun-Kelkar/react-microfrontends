@@ -1,0 +1,16 @@
+{
+  "buildCommand": "cd ../.. && npm ci && npm run build --workspace=packages/shell",
+  "outputDirectory": "dist",
+  "framework": null,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/((?!remoteEntry|assets|static|.*\\..*).*)", "destination": "/index.html" }
+  ]
+}

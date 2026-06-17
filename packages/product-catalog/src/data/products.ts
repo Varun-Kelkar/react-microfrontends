@@ -1,0 +1,68 @@
+import { Product } from '@mfe-demo/shared/types';
+
+export const products: Product[] = [
+  {
+    id: '1',
+    name: 'Wireless Headphones',
+    description: 'Premium noise-cancelling headphones with 30-hour battery life.',
+    price: 199.99,
+    image: 'https://picsum.photos/seed/headphones/400/300',
+    category: 'Electronics',
+  },
+  {
+    id: '2',
+    name: 'Mechanical Keyboard',
+    description: 'RGB backlit mechanical keyboard with Cherry MX switches.',
+    price: 149.99,
+    image: 'https://picsum.photos/seed/keyboard/400/300',
+    category: 'Electronics',
+  },
+  {
+    id: '3',
+    name: 'Running Shoes',
+    description: 'Lightweight running shoes with responsive cushioning.',
+    price: 89.99,
+    image: 'https://picsum.photos/seed/shoes/400/300',
+    category: 'Sports',
+  },
+  {
+    id: '4',
+    name: 'Coffee Maker',
+    description: 'Programmable drip coffee maker with thermal carafe.',
+    price: 79.99,
+    image: 'https://picsum.photos/seed/coffee/400/300',
+    category: 'Home',
+  },
+  {
+    id: '5',
+    name: 'Backpack',
+    description: 'Water-resistant laptop backpack with USB charging port.',
+    price: 59.99,
+    image: 'https://picsum.photos/seed/backpack/400/300',
+    category: 'Accessories',
+  },
+  {
+    id: '6',
+    name: 'Smart Watch',
+    description: 'Fitness tracking smartwatch with heart rate monitor.',
+    price: 249.99,
+    image: 'https://picsum.photos/seed/watch/400/300',
+    category: 'Electronics',
+  },
+  {
+    id: '7',
+    name: 'Yoga Mat',
+    description: 'Non-slip premium yoga mat with carrying strap.',
+    price: 39.99,
+    image: 'https://picsum.photos/seed/yoga/400/300',
+    category: 'Sports',
+  },
+  {
+    id: '8',
+    name: 'Desk Lamp',
+    description: 'LED desk lamp with adjustable brightness and color temperature.',
+    price: 44.99,
+    image: 'https://picsum.photos/seed/lamp/400/300',
+    category: 'Home',
+  },
+];
