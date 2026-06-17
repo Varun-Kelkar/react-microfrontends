@@ -75,7 +75,7 @@ const HealthCheck: React.FC = () => {
 
       {/* Status table */}
       <div className="bg-white dark:bg-secondary-800 rounded shadow-sm border border-secondary-200 dark:border-secondary-700 overflow-x-auto">
-        <table className="w-full">
+        <table className="min-w-full">
           <thead>
             <tr className="border-b border-secondary-200 dark:border-secondary-700 bg-secondary-50 dark:bg-secondary-900">
               <th className="text-left px-6 py-3 text-sm font-semibold text-secondary-700 dark:text-secondary-300">
@@ -120,7 +120,7 @@ const HealthCheck: React.FC = () => {
                     <td className="px-6 py-4 text-sm text-secondary-600 dark:text-secondary-400">
                       {result.responseTime !== undefined ? `${result.responseTime}ms` : '—'}
                     </td>
-                    <td className="px-6 py-4 text-sm text-secondary-500 dark:text-secondary-400 font-mono truncate max-w-[200px]">
+                    <td className="px-6 py-4 text-sm text-secondary-500 dark:text-secondary-400 font-mono whitespace-nowrap">
                       {result.url}
                     </td>
                   </tr>
