@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-white rounded shadow-md overflow-hidden border border-secondary-200 ${className}`}
+      className={`bg-white dark:bg-secondary-800 rounded shadow-md overflow-hidden border border-secondary-200 dark:border-secondary-700 ${className}`}
     >
       {image && (
         <img
@@ -30,14 +30,14 @@ const Card: React.FC<CardProps> = ({
       )}
       <div className="p-4">
         {title && (
-          <h3 className="text-lg font-semibold text-secondary-900 mb-2">
+          <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100 mb-2">
             {title}
           </h3>
         )}
-        <div className="text-secondary-600">{children}</div>
+        <div className="text-secondary-600 dark:text-secondary-300">{children}</div>
       </div>
       {footer && (
-        <div className="px-4 py-3 bg-secondary-50 border-t border-secondary-200">
+        <div className="px-4 py-3 bg-secondary-50 dark:bg-secondary-900 border-t border-secondary-200 dark:border-secondary-700">
           {footer}
         </div>
       )}

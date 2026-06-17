@@ -37,12 +37,12 @@ const Modal: React.FC<ModalProps> = ({
         className="fixed inset-0 bg-black/50 transition-opacity"
         onClick={onClose}
       />
-      <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full mx-4 z-10">
-        <div className="flex items-center justify-between p-4 border-b border-secondary-200">
-          <h2 className="text-lg font-semibold text-secondary-900">{title}</h2>
+      <div className="relative bg-white dark:bg-secondary-800 rounded-lg shadow-xl max-w-md w-full mx-4 z-10">
+        <div className="flex items-center justify-between p-4 border-b border-secondary-200 dark:border-secondary-700">
+          <h2 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100">{title}</h2>
           <button
             onClick={onClose}
-            className="text-secondary-400 hover:text-secondary-600 transition-colors"
+            className="text-secondary-400 hover:text-secondary-600 dark:hover:text-secondary-300 transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -51,7 +51,7 @@ const Modal: React.FC<ModalProps> = ({
         </div>
         <div className="p-4">{children}</div>
         {footer && (
-          <div className="px-4 py-3 bg-secondary-50 border-t border-secondary-200 flex justify-end gap-2">
+          <div className="px-4 py-3 bg-secondary-50 dark:bg-secondary-900 border-t border-secondary-200 dark:border-secondary-700 flex justify-end gap-2">
             {footer}
           </div>
         )}

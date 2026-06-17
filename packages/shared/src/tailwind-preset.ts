@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const sharedPreset: Partial<Config> = {
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {

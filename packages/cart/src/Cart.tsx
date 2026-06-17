@@ -55,8 +55,8 @@ const Cart: React.FC = () => {
   if (items.length === 0) {
     return (
       <div className="text-center py-16">
-        <p className="text-secondary-500 text-lg">Your cart is empty.</p>
-        <p className="text-secondary-400 text-sm mt-2">
+        <p className="text-secondary-500 dark:text-secondary-400 text-lg">Your cart is empty.</p>
+        <p className="text-secondary-400 dark:text-secondary-500 text-sm mt-2">
           Browse products and add items to your cart.
         </p>
       </div>
@@ -65,7 +65,7 @@ const Cart: React.FC = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary-900 mb-6">
+      <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100 mb-6">
         Shopping Cart ({items.reduce((s, i) => s + i.quantity, 0)} items)
       </h1>
 
@@ -73,7 +73,7 @@ const Cart: React.FC = () => {
         {items.map((item) => (
           <div
             key={item.product.id}
-            className="flex items-center gap-4 bg-white p-4 rounded shadow-sm border border-secondary-200"
+            className="flex items-center gap-4 bg-white dark:bg-secondary-800 p-4 rounded shadow-sm border border-secondary-200 dark:border-secondary-700"
           >
             <img
               src={item.product.image}
@@ -81,17 +81,17 @@ const Cart: React.FC = () => {
               className="w-20 h-20 object-cover rounded"
             />
             <div className="flex-1">
-              <h3 className="font-semibold text-secondary-900">
+              <h3 className="font-semibold text-secondary-900 dark:text-secondary-100">
                 {item.product.name}
               </h3>
-              <p className="text-sm text-secondary-500">
+              <p className="text-sm text-secondary-500 dark:text-secondary-400">
                 ${item.product.price.toFixed(2)} each
               </p>
             </div>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => updateQuantity(item.product.id, -1)}
-                className="w-8 h-8 flex items-center justify-center rounded bg-secondary-100 text-secondary-700 hover:bg-secondary-200"
+                className="w-8 h-8 flex items-center justify-center rounded bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600"
               >
                 −
               </button>
@@ -100,12 +100,12 @@ const Cart: React.FC = () => {
               </span>
               <button
                 onClick={() => updateQuantity(item.product.id, 1)}
-                className="w-8 h-8 flex items-center justify-center rounded bg-secondary-100 text-secondary-700 hover:bg-secondary-200"
+                className="w-8 h-8 flex items-center justify-center rounded bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600"
               >
                 +
               </button>
             </div>
-            <p className="font-bold text-secondary-900 w-24 text-right">
+            <p className="font-bold text-secondary-900 dark:text-secondary-100 w-24 text-right">
               ${(item.product.price * item.quantity).toFixed(2)}
             </p>
             <button
@@ -118,8 +118,8 @@ const Cart: React.FC = () => {
         ))}
       </div>
 
-      <div className="mt-6 flex items-center justify-between bg-white p-4 rounded shadow-sm border border-secondary-200">
-        <span className="text-lg font-semibold text-secondary-900">Total:</span>
+      <div className="mt-6 flex items-center justify-between bg-white dark:bg-secondary-800 p-4 rounded shadow-sm border border-secondary-200 dark:border-secondary-700">
+        <span className="text-lg font-semibold text-secondary-900 dark:text-secondary-100">Total:</span>
         <span className="text-2xl font-bold text-primary-600">
           ${total.toFixed(2)}
         </span>
@@ -150,7 +150,7 @@ const Cart: React.FC = () => {
           </>
         }
       >
-        <p className="text-secondary-600">
+        <p className="text-secondary-600 dark:text-secondary-300">
           Are you sure you want to remove this item from your cart?
         </p>
       </Modal>

@@ -67,10 +67,10 @@ const Checkout: React.FC = () => {
     return (
       <div className="text-center py-16">
         <div className="text-6xl mb-4">🎉</div>
-        <h2 className="text-2xl font-bold text-secondary-900 mb-2">
+        <h2 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100 mb-2">
           Order Placed Successfully!
         </h2>
-        <p className="text-secondary-500">
+        <p className="text-secondary-500 dark:text-secondary-400">
           Thank you for your purchase. Your order is being processed.
         </p>
         <div className="mt-6">
@@ -85,8 +85,8 @@ const Checkout: React.FC = () => {
   if (cartItems.length === 0) {
     return (
       <div className="text-center py-16">
-        <p className="text-secondary-500 text-lg">Your cart is empty.</p>
-        <p className="text-secondary-400 text-sm mt-2">
+        <p className="text-secondary-500 dark:text-secondary-400 text-lg">Your cart is empty.</p>
+        <p className="text-secondary-400 dark:text-secondary-500 text-sm mt-2">
           Add items to your cart before checking out.
         </p>
       </div>
@@ -95,30 +95,30 @@ const Checkout: React.FC = () => {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-secondary-900 mb-6">Checkout</h1>
+      <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100 mb-6">Checkout</h1>
 
       {/* Order summary */}
-      <div className="bg-white p-4 rounded shadow-sm border border-secondary-200 mb-6">
-        <h2 className="font-semibold text-secondary-900 mb-3">Order Summary</h2>
+      <div className="bg-white dark:bg-secondary-800 p-4 rounded shadow-sm border border-secondary-200 dark:border-secondary-700 mb-6">
+        <h2 className="font-semibold text-secondary-900 dark:text-secondary-100 mb-3">Order Summary</h2>
         {cartItems.map((item) => (
           <div key={item.product.id} className="flex justify-between text-sm py-1">
-            <span className="text-secondary-600">
+            <span className="text-secondary-600 dark:text-secondary-400">
               {item.product.name} × {item.quantity}
             </span>
-            <span className="text-secondary-900 font-medium">
+            <span className="text-secondary-900 dark:text-secondary-100 font-medium">
               ${(item.product.price * item.quantity).toFixed(2)}
             </span>
           </div>
         ))}
-        <div className="border-t border-secondary-200 mt-3 pt-3 flex justify-between">
+        <div className="border-t border-secondary-200 dark:border-secondary-700 mt-3 pt-3 flex justify-between">
           <span className="font-semibold">Total</span>
           <span className="font-bold text-primary-600">${total.toFixed(2)}</span>
         </div>
       </div>
 
       {/* Shipping form */}
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-sm border border-secondary-200">
-        <h2 className="font-semibold text-secondary-900 mb-4">Shipping Address</h2>
+      <form onSubmit={handleSubmit} className="bg-white dark:bg-secondary-800 p-6 rounded shadow-sm border border-secondary-200 dark:border-secondary-700">
+        <h2 className="font-semibold text-secondary-900 dark:text-secondary-100 mb-4">Shipping Address</h2>
 
         <Input
           label="Full Name"

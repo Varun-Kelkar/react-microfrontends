@@ -36,7 +36,7 @@ const ProductCatalog: React.FC = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-secondary-900 mb-6">Products</h1>
+      <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100 mb-6">Products</h1>
 
       {/* Category filters */}
       <div className="flex gap-2 mb-6 flex-wrap">
@@ -47,7 +47,7 @@ const ProductCatalog: React.FC = () => {
             className={`px-3 py-1.5 text-sm rounded transition-colors ${
               selectedCategory === category
                 ? 'bg-primary-600 text-white'
-                : 'bg-secondary-100 text-secondary-700 hover:bg-secondary-200'
+                : 'bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600'
             }`}
           >
             {category}
@@ -65,7 +65,7 @@ const ProductCatalog: React.FC = () => {
             imageAlt={product.name}
             footer={
               <div className="flex items-center justify-between">
-                <span className="text-lg font-bold text-secondary-900">
+                <span className="text-lg font-bold text-secondary-900 dark:text-secondary-100">
                   ${product.price.toFixed(2)}
                 </span>
                 <Button size="sm" onClick={() => handleAddToCart(product)}>
@@ -75,7 +75,7 @@ const ProductCatalog: React.FC = () => {
             }
           >
             <p className="text-sm">{product.description}</p>
-            <span className="inline-block mt-2 text-xs bg-secondary-100 text-secondary-600 px-2 py-0.5 rounded">
+            <span className="inline-block mt-2 text-xs bg-secondary-100 dark:bg-secondary-700 text-secondary-600 dark:text-secondary-400 px-2 py-0.5 rounded">
               {product.category}
             </span>
           </Card>
