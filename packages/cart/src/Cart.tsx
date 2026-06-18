@@ -100,7 +100,7 @@ const Cart: React.FC = () => {
                 >
                   −
                 </button>
-                <span className="w-8 text-center font-medium">
+                <span className="w-8 text-center font-medium text-secondary-900 dark:text-secondary-100">
                   {item.quantity}
                 </span>
                 <button
