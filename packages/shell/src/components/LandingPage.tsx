@@ -18,6 +18,7 @@ import {
   ArrowRight,
   ExternalLink,
   CheckCircle2,
+  Lock,
 } from 'lucide-react';
 
 const techStack = [
@@ -27,6 +28,7 @@ const techStack = [
   { name: 'Tailwind CSS', description: 'Utility-first styling with shared preset', icon: Wind },
   { name: 'React Router', description: 'Client-side routing in the shell', icon: Route },
   { name: 'Custom Event Bus', description: 'Cross-MFE communication via pub/sub', icon: Radio },
+  { name: 'Clerk Auth', description: 'Authentication with Google & GitHub SSO', icon: Lock },
 ];
 
 const microApps = [
@@ -57,8 +59,14 @@ const microApps = [
   {
     name: 'Checkout',
     port: 3004,
-    description: 'Handles the checkout flow with form validation and order summary.',
+    description: 'Handles the checkout flow with form validation and order summary. Requires authentication.',
     color: 'from-rose-500 to-rose-600',
+  },
+  {
+    name: 'Auth',
+    port: 3005,
+    description: 'Authentication service powered by Clerk with Google & GitHub SSO, user profile, and route protection.',
+    color: 'from-indigo-500 to-indigo-600',
   },
 ];
 
@@ -72,6 +80,7 @@ const LandingPage: React.FC = () => {
     { text: 'Consistent styling via Tailwind preset', icon: Paintbrush },
     { text: 'TypeScript across all packages', icon: Code2 },
     { text: 'Hot module replacement in dev', icon: Flame },
+    { text: 'Clerk-based auth with Google & GitHub SSO', icon: Lock },
   ];
 
   return (
@@ -124,7 +133,7 @@ const LandingPage: React.FC = () => {
               <div className="text-xs text-secondary-400 font-medium">remoteEntry.js</div>
               <div className="w-px h-6 bg-secondary-300 dark:bg-secondary-600" />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 w-full">
               {microApps.slice(1).map((app) => (
                 <div
                   key={app.name}
@@ -141,7 +150,7 @@ const LandingPage: React.FC = () => {
               <div className="w-px h-6 bg-secondary-300 dark:bg-secondary-600" />
             </div>
             <div className="w-full max-w-sm px-6 py-3 rounded-lg border-2 border-dashed border-secondary-300 dark:border-secondary-600 text-center text-secondary-600 dark:text-secondary-400 text-sm font-medium">
-              React · React DOM · React Router · Event Bus
+              React · React DOM · React Router · Clerk · Event Bus
             </div>
           </div>
         </div>
