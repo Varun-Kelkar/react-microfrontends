@@ -54,3 +54,28 @@ declare module 'checkout/Checkout' {
   const Checkout: React.FC;
   export default Checkout;
 }
+
+declare module 'auth/SignInPage' {
+  const SignInPage: React.FC;
+  export default SignInPage;
+}
+
+declare module 'auth/SignUpPage' {
+  const SignUpPage: React.FC;
+  export default SignUpPage;
+}
+
+declare module 'auth/UserMenu' {
+  const UserMenu: React.FC;
+  export default UserMenu;
+}
+
+declare module 'auth/AuthGuard' {
+  const AuthGuard: React.FC<{ children: React.ReactNode }>;
+  export default AuthGuard;
+}
+
+declare module 'auth/ProfilePage' {
+  const ProfilePage: React.FC;
+  export default ProfilePage;
+}

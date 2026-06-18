@@ -20,6 +20,6 @@ export const eventSchemas = {
     delta: z.number().int(),
   }),
   'cart:clear': z.null(),
-  'auth:login': z.object({ userId: z.string(), name: z.string() }),
+  'auth:login': z.object({ userId: z.string(), name: z.string(), email: z.string().email() }),
   'auth:logout': z.null(),
 } as const;

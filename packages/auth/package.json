@@ -1,16 +1,15 @@
 {
-  "name": "@mfe-demo/shell",
+  "name": "@mfe-demo/auth",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "webpack serve --mode development --port 3000",
+    "start": "webpack serve --mode development --port 3005",
     "build": "webpack --mode production",
     "lint": "eslint src/",
     "test": "echo \"No tests yet\""
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.22.0",
-    "lucide-react": "^1.18.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1"

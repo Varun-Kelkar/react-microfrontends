@@ -9,7 +9,7 @@ export interface EventPayloadMap {
   'cart:remove-item': { productId: string };
   'cart:update-quantity': { productId: string; delta: number };
   'cart:clear': null;
-  'auth:login': { userId: string; name: string };
+  'auth:login': { userId: string; name: string; email: string };
   'auth:logout': null;
 }
 
