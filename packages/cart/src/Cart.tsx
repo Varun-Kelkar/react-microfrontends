@@ -75,47 +75,51 @@ const Cart: React.FC = () => {
         {items.map((item) => (
           <div
             key={item.product.id}
-            className="flex items-center gap-4 bg-white dark:bg-secondary-800 p-4 rounded shadow-sm border border-secondary-200 dark:border-secondary-700"
+            className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 bg-white dark:bg-secondary-800 p-4 rounded shadow-sm border border-secondary-200 dark:border-secondary-700"
           >
-            <img
-              src={item.product.image}
-              alt={item.product.name}
-              className="w-20 h-20 object-cover rounded"
-            />
-            <div className="flex-1">
-              <h3 className="font-semibold text-secondary-900 dark:text-secondary-100">
-                {item.product.name}
-              </h3>
-              <p className="text-sm text-secondary-500 dark:text-secondary-400">
-                ${item.product.price.toFixed(2)} each
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <img
+                src={item.product.image}
+                alt={item.product.name}
+                className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded shrink-0"
+              />
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-secondary-900 dark:text-secondary-100 truncate">
+                  {item.product.name}
+                </h3>
+                <p className="text-sm text-secondary-500 dark:text-secondary-400">
+                  ${item.product.price.toFixed(2)} each
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 sm:shrink-0">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => updateQuantity(item.product.id, -1)}
+                  className="w-8 h-8 flex items-center justify-center rounded bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600"
+                >
+                  −
+                </button>
+                <span className="w-8 text-center font-medium">
+                  {item.quantity}
+                </span>
+                <button
+                  onClick={() => updateQuantity(item.product.id, 1)}
+                  className="w-8 h-8 flex items-center justify-center rounded bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600"
+                >
+                  +
+                </button>
+              </div>
+              <p className="font-bold text-secondary-900 dark:text-secondary-100 w-20 sm:w-24 text-right">
+                ${(item.product.price * item.quantity).toFixed(2)}
               </p>
-            </div>
-            <div className="flex items-center gap-2">
               <button
-                onClick={() => updateQuantity(item.product.id, -1)}
-                className="w-8 h-8 flex items-center justify-center rounded bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600"
+                onClick={() => setRemoveTarget(item.product.id)}
+                className="text-danger-500 hover:text-danger-600 text-sm shrink-0"
               >
-                −
-              </button>
-              <span className="w-8 text-center font-medium">
-                {item.quantity}
-              </span>
-              <button
-                onClick={() => updateQuantity(item.product.id, 1)}
-                className="w-8 h-8 flex items-center justify-center rounded bg-secondary-100 dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-200 dark:hover:bg-secondary-600"
-              >
-                +
+                Remove
               </button>
             </div>
-            <p className="font-bold text-secondary-900 dark:text-secondary-100 w-24 text-right">
-              ${(item.product.price * item.quantity).toFixed(2)}
-            </p>
-            <button
-              onClick={() => setRemoveTarget(item.product.id)}
-              className="text-danger-500 hover:text-danger-600 text-sm"
-            >
-              Remove
-            </button>
           </div>
         ))}
       </div>

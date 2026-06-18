@@ -53,6 +53,7 @@ module.exports = (env, argv) => {
         shared: {
           react: { singleton: true, strictVersion: true, requiredVersion: '^18.3.1' },
           'react-dom': { singleton: true, strictVersion: true, requiredVersion: '^18.3.1' },
+          'react-router-dom': { singleton: true, strictVersion: true, requiredVersion: '^6.23.1' },
         },
       }),
       new webpack.DefinePlugin({
