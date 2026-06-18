@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, ShoppingBag, ShoppingCart, CreditCard, Activity } from 'lucide-react';
+import { Home, ShoppingBag, ShoppingCart, CreditCard, Activity, LogIn } from 'lucide-react';
+import { useAuth } from '@clerk/clerk-react';
 import { EventBus } from '@mfe-demo/shared/eventBus';
 import type { CartItem } from '@mfe-demo/shared/types';
 import ThemeToggle from './ThemeToggle';
 
+const UserMenu = lazy(() => import('auth/UserMenu'));
+
 const Header: React.FC = () => {
   const [cartCount, setCartCount] = useState(0);
   const location = useLocation();
+  const { isSignedIn } = useAuth();
 
   useEffect(() => {
     const updateCartCount = () => {
@@ -74,6 +78,19 @@ const Header: React.FC = () => {
             );
           })}
           <ThemeToggle />
+          {isSignedIn ? (
+            <Suspense fallback={<div className="w-8 h-8 rounded-full bg-secondary-200 dark:bg-secondary-700 animate-pulse" />}>
+              <UserMenu />
+            </Suspense>
+          ) : (
+            <Link
+              to="/sign-in"
+              className="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-medium text-secondary-600 dark:text-secondary-400 hover:text-primary-600 transition-colors"
+            >
+              <LogIn className="w-4 h-4" />
+              <span className="hidden sm:inline">Sign In</span>
+            </Link>
+          )}
         </nav>
       </div>
     </header>
