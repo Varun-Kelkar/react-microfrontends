@@ -1,5 +1,5 @@
 {
-  "ignoreBuildStep": "bash ../../scripts/ignore-build.sh",
+  "ignoreCommand": "bash ../../scripts/ignore-build.sh",
   "buildCommand": "cd ../.. && npm ci && npm run build --workspace=packages/cart",
   "outputDirectory": "dist",
   "framework": null,
