@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from '@clerk/clerk-react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './styles.css';
+
 
 interface AuthGuardProps {
   children: React.ReactNode;

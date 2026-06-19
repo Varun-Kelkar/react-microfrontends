@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserProfile } from '@clerk/clerk-react';
-import './styles.css';
+
 
 const ProfilePage: React.FC = () => {
   return (

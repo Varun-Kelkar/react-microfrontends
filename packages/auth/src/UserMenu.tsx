@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { UserButton, useUser } from '@clerk/clerk-react';
 import { EventBus } from '@mfe-demo/shared/eventBus';
-import './styles.css';
+
 
 const UserMenu: React.FC = () => {
   const { isSignedIn, user } = useUser();

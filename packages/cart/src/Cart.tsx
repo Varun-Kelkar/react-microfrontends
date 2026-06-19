@@ -4,7 +4,7 @@ import Button from 'uiKit/Button';
 import Modal from 'uiKit/Modal';
 import { EventBus } from '@mfe-demo/shared/eventBus';
 import { CartItem } from '@mfe-demo/shared/types';
-import './styles.css';
+
 
 const Cart: React.FC = () => {
   const navigate = useNavigate();

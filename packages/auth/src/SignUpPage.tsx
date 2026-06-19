@@ -1,6 +1,6 @@
 import React from 'react';
 import { SignUp } from '@clerk/clerk-react';
-import './styles.css';
+
 
 const SignUpPage: React.FC = () => {
   return (

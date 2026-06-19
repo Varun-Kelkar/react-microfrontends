@@ -5,7 +5,6 @@ import Card from 'uiKit/Card';
 import { EventBus } from '@mfe-demo/shared/eventBus';
 import { Product, CartItem } from '@mfe-demo/shared/types';
 import { products } from './data/products';
-import './styles.css';
 
 const ProductCatalog: React.FC = () => {
   const navigate = useNavigate();

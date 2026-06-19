@@ -5,7 +5,7 @@ import Input from 'uiKit/Input';
 import Toast from 'uiKit/Toast';
 import { EventBus } from '@mfe-demo/shared/eventBus';
 import { CartItem, ShippingAddress } from '@mfe-demo/shared/types';
-import './styles.css';
+
 
 const Checkout: React.FC = () => {
   const navigate = useNavigate();
